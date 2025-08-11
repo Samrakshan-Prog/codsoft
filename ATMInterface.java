@@ -1,16 +1,12 @@
 import java.util.Scanner;
-
 class BankAccount {
     private double balance;
-
     public BankAccount(double initialBalance) {
         this.balance = initialBalance;
     }
-
     public double getBalance() {
         return balance;
     }
-
     public void deposit(double amount) {
         if (amount > 0) {
             balance += amount;
@@ -19,7 +15,6 @@ class BankAccount {
             System.out.println("Invalid deposit amount. Please enter a positive number.");
         }
     }
-
     public boolean withdraw(double amount) {
         if (amount > 0 && amount <= balance) {
             balance -= amount;
@@ -34,16 +29,13 @@ class BankAccount {
         }
     }
 }
-
 public class ATMInterface {
     private BankAccount userAccount;
     private Scanner scanner;
-
     public ATMInterface(BankAccount account) {
         this.userAccount = account;
         this.scanner = new Scanner(System.in);
     }
-
     private void displayMenu() {
         System.out.println("\n--- ATM Menu ---");
         System.out.println("1. Check Balance");
@@ -52,7 +44,6 @@ public class ATMInterface {
         System.out.println("4. Exit");
         System.out.print("Please choose an option: ");
     }
-
     public void run() {
         int choice;
         while (true) {
@@ -82,11 +73,9 @@ public class ATMInterface {
             }
         }
     }
-
     private void checkBalance() {
         System.out.println("Your current balance is: $" + String.format("%.2f", userAccount.getBalance()));
     }
-
     private void deposit() {
         System.out.print("Enter amount to deposit: $");
         try {
@@ -97,7 +86,6 @@ public class ATMInterface {
             scanner.next();
         }
     }
-
     private void withdraw() {
         System.out.print("Enter amount to withdraw: $");
         try {
@@ -108,7 +96,6 @@ public class ATMInterface {
             scanner.next();
         }
     }
-
     public static void main(String[] args) {
         BankAccount myAccount = new BankAccount(1000.00);
         ATMInterface myAtm = new ATMInterface(myAccount);
